@@ -1,0 +1,19 @@
+Enum Nível 
+fun Nivel.proximo() = Nivel.values()[ordinal + 1]
+fun Nivel.anterior() = Nivel.values()[ordinal - 1]
+
+Descições dos níveis 
+enum class Nivel(val descricao: String) {
+    BASICO("Básico"),
+    INTERMEDIARIO("Intermediário"),
+    DIFICIL("Difícil")
+}
+
+Exemplo: Usúario
+val usuario = Usuario(nome = "Matheus Soares", email = "matheussoares@email.com", nivelConhecimento = Nivel.BASICO)
+val conteudo = ConteudoEducacional(nome = "Aula 1: Introdução ao Kotlin", tipo = TipoConteudo.AULA, nivelDificuldade = Nivel.BASICO)
+val formacao = Formacao(nome = "Curso de Kotlin", tipo = TipoFormacao.CURSO, dataInicio = LocalDate.now(), dataTermino = LocalDate.now().plusDays(30), conteudos = listOf(conteudo))
+
+formacao.matricular(usuario)
+
+println(formacao.inscritos.contains(usuario)) // true
